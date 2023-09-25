@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the form on the page */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg,#ff00cc, #3333cc);
+        }
+        .container {
+            background-color:#ff00cc, #3333cc; /* Slight disco-like background */
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Registration Form</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Re-enter Password:</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="male" name="gender" value="male" required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="female" name="gender" value="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" class="form-control" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select class="form-control" id="country" name="country" required>
+                    <option value="USA">United States</option>
+                    <option value="Canada">Canada</option>
+                    <!-- Add more countries here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Languages Known:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="english" name="languages[]" value="English">
+                    <label class="form-check-label" for="english">English</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="kannada" name="languages[]" value="Kannada">
+                    <label class="form-check-label" for="kannada">Kannada</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hindi" name="languages[]" value="Hindi">
+                    <label class="form-check-label" for="hindi">Hindi</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="telugu" name="languages[]" value="Telugu">
+                    <label class="form-check-label" for="telugu">Telugu</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="declaration" name="declaration" required>
+                    <label class="form-check-label" for="declaration">Hereby I declare all the given details are true</label>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript code for form submission and validation
+        const form = document.getElementById("registrationForm");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Perform form validation here
+            if (validateForm()) {
+                // If the form is valid, you can submit it to the server or take other actions.
+                alert("Registration successful!");
+                // Reset the form
+                form.reset();
+            }
+        });
+
+        function validateForm() {
+            // You can add your validation logic here
+            // Example: Check if password and confirm password match
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Add more validation as needed
+            return true;
+        }
+    </script>
+</body>
+</html>

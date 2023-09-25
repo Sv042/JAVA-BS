@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Date and Time (IST)</title>
+</head>
+<body>
+    <h1>Current Date and Time (IST)</h1>
+    <p id="datetime"></p>
+
+    <button id="getDateButton">Get Current Date</button>
+    <button id="getTimeButton">Get Current Time</button>
+
+    <script>
+        function getCurrentISTDate() {
+            const options = {
+                timeZone: 'Asia/Kolkata', // Set the time zone to IST
+                dateStyle: 'full', // Display the full date format
+            };
+
+            const istDate = new Date().toLocaleDateString('en-US', options);
+
+            // Display the IST date
+            const datetimeElement = document.getElementById("datetime");
+            datetimeElement.textContent = `Current IST Date: ${istDate}`;
+        }
+
+        function getCurrentISTTime() {
+            const options = {
+                timeZone: 'Asia/Kolkata', // Set the time zone to IST
+                timeStyle: 'medium', // Display the medium time format
+            };
+
+            const istTime = new Date().toLocaleTimeString('en-US', options);
+
+            // Display the IST time
+            const datetimeElement = document.getElementById("datetime");
+            datetimeElement.textContent = `Current IST Time: ${istTime}`;
+        }
+
+        // Add event listeners to the buttons
+        const getDateButton = document.getElementById("getDateButton");
+        const getTimeButton = document.getElementById("getTimeButton");
+
+        getDateButton.addEventListener("click", getCurrentISTDate);
+        getTimeButton.addEventListener("click", getCurrentISTTime);
+    </script>
+</body>
+</html>

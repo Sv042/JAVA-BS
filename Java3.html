@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication and Division Calculator</title>
+</head>
+<body>
+    <h1>Multiplication and Division Calculator</h1>
+    <label for="num1">Enter the first number:</label>
+    <input type="number" id="num1"><br>
+    <label for="num2">Enter the second number:</label>
+    <input type="number" id="num2"><br>
+    <button onclick="calculate()">Calculate</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            // Get the input elements for the numbers
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+
+            // Check if both inputs are valid numbers
+            if (!isNaN(num1) && !isNaN(num2)) {
+                // Calculate multiplication and division
+                const multiplicationResult = num1 * num2;
+                const divisionResult = num1 / num2;
+
+                // Display the results
+                const resultElement = document.getElementById("result");
+                resultElement.innerHTML = `Multiplication: ${multiplicationResult}<br>Division: ${divisionResult}`;
+            } else {
+                // Display an error message if inputs are not valid numbers
+                const resultElement = document.getElementById("result");
+                resultElement.textContent = "Please enter valid numbers.";
+            }
+        }
+    </script>
+</body>
+</html>

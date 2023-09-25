@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Train Animation</title>
+    <style>
+        /* Style for the train and buttons */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Hide horizontal scrollbar */
+        }
+        
+        #train-container {
+            text-align: center;
+        }
+
+        .train {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .train-car {
+            width: 150px;
+            height: 50px;
+            background-color: #009688;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .wheel {
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+
+        #startButton, #stopButton {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="train-container">
+        <div id="train">
+            <div class="train-car">
+                <div class="wheel"></div>
+                <div class="wheel"></div>
+            </div>
+            <div class="train-car">
+                <div class="wheel"></div>
+                <div class="wheel"></div>
+            </div>
+            <div class="train-car">
+                <div class="wheel"></div>
+                <div class="wheel"></div>
+            </div>
+        </div>
+        <button id="startButton">Start</button>
+        <button id="stopButton">Stop</button>
+    </div>
+
+    <script>
+        // Get references to the train and buttons
+        const train = document.getElementById('train');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let animationInterval;
+        let currentPosition = 0;
+        const trainWidth = 200; // Width of the train container
+
+        // Function to start the train animation
+        function startTrainAnimation() {
+            animationInterval = setInterval(() => {
+                currentPosition += 10;
+                // Check if the train has moved out of the page
+                if (currentPosition > window.innerWidth) {
+                    currentPosition = -trainWidth; // Reset to the initial position
+                }
+                train.style.transform = `translateX(${currentPosition}px)`;
+            }, 100);
+        }
+
+        // Function to stop the train animation
+        function stopTrainAnimation() {
+            clearInterval(animationInterval);
+        }
+
+        // Event listeners for the buttons
+        startButton.addEventListener('click', startTrainAnimation);
+        stopButton.addEventListener('click', stopTrainAnimation);
+    </script>
+</body>
+</html>
